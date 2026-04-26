@@ -2,7 +2,7 @@
 
 Mandelbrot set generator in C++ with the [matplot++](https://github.com/alandefreitas/matplotplusplus/tree/master) visualisation library.
 
-![https://github.com/eitanoid/mandelbrotplusplus/blob/main/mandelbrot.png]
+![mandelbrot.png]
 
 # Usage
 
