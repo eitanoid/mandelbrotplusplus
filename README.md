@@ -4,6 +4,12 @@ Mandelbrot set generator in C++ with the [matplot++](https://github.com/alandefr
 
 # Usage
 
+The provided Nix flake bundles all the required dependancies:
+```bash
+nix develop github:eitanoid/mandelbrotplusplus
+```
+
+Build and run:
 ```bash
 cmake -S . -B build
 cmake --build build -j$(nproc)
