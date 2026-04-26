@@ -21,7 +21,9 @@ void visualize(const std::vector<uint32_t> &data, int width, int height) {
   std::vector<std::vector<double>> matrix(height, std::vector<double>(width));
   for (int y = 0; y < height; ++y) {
     for (int x = 0; x < width; ++x) {
-      matrix[y][x] = (std::log(static_cast<double>(data[y * width + x])));
+      // use log scale to improve visualisation
+      auto val = data[y * width + x];
+      matrix[y][x] = val > 0 ? std::log(static_cast<double>(val)) : 0.0;
     }
   }
   auto f = figure(false);
@@ -46,8 +48,8 @@ int main(int argc, char *argv[]) {
   uint32_t max_iter;
 
   if (argc < 4) {
-    std::cerr << "Incorrect usage." << std::endl
-              << "./mandelbrot [width] [height] [max_iter]" << std::endl;
+    std::cerr << "Incorrect usage: ./mandelbrot [width] [height] [max_iter]"
+              << std::endl;
     return 1;
   }
   // validate input
@@ -56,8 +58,13 @@ int main(int argc, char *argv[]) {
     height = std::stoi(argv[2]);
     max_iter = std::stoi(argv[3]);
   } catch (...) {
-    std::cerr << "Incorrect usage." << std::endl
-              << "./mandelbrot [width] [height] [max_iter]" << std::endl;
+    std::cerr << "Incorrect usage: ./mandelbrot [width] [height] [max_iter]"
+              << std::endl;
+    return 1;
+  }
+
+  if (width <= 0 || height <= 0 || max_iter == 0) {
+    std::cerr << "Incorrect usage: all values must be positive." << std::endl;
     return 1;
   }
 
