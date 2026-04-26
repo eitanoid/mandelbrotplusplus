@@ -1,13 +1,11 @@
+# Mandelbrot Set Generator
 
-Goal:
+Mandelbrot set generator in C++ with the [matplot++](https://github.com/alandefreitas/matplotplusplus/tree/master) visualisation library.
 
-- Mandlebrot set generator in C++
-- Built with `flake.nix`
-- Possibly multithreaded with worker groups
-- Either realtime animation or output filetype
+# Usage
 
-Learning Goals:
-
-- build my first cpp project
-- learn OOP in cpp
-- use nix to build a project
+```bash
+cmake -S . -B build
+cmake --build build -j$(nproc)
+./build/mandelbrot 1000 1000 10000 # [width] [height] [iterations]
+```
