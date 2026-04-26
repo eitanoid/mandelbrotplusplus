@@ -45,6 +45,11 @@ int main(int argc, char *argv[]) {
   int height;
   uint32_t max_iter;
 
+  if (argc < 4) {
+    std::cerr << "Incorrect usage." << std::endl
+              << "./mandelbrot [width] [height] [max_iter]" << std::endl;
+    return 1;
+  }
   // validate input
   try {
     width = std::stoi(argv[1]);
